@@ -88,12 +88,10 @@ js/script.js
 
 ## Enllaços
 
-- Repositori GitHub: PENDENT D'AFEGIR
-- GitHub Pages: PENDENT D'AFEGIR
+- Repositori GitHub: https://github.com/jgr31/tasca6-daw-kanban
+- GitHub Pages: https://jgr31.github.io/tasca6-daw-kanban/
 
 ## Captures de pantalla
-
-Afegir captures dins la carpeta `img/` i inserir-les aquí quan el projecte estigui pujat a GitHub.
 
 Exemple:
 

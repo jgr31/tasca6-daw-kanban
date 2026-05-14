@@ -93,9 +93,6 @@ js/script.js
 
 ## Captures de pantalla
 
-Exemple:
 
-```markdown
 ![Vista principal](img/captura-principal.png)
 ![Vista mòbil](img/captura-mobil.png)
-```

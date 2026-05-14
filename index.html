@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow Kanban</title>
+  <link rel="stylesheet" href="css/estils.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="capcalera">
+    <div>
+      <p class="etiqueta">DAW06 · Gestió de tasques</p>
+      <h1>TaskFlow Kanban</h1>
+      <p>Organitza tasques, prioritats i estats amb persistència local.</p>
+    </div>
+    <button id="btnNetejar" class="boto boto-secundari" type="button">Esborrar totes les tasques</button>
+  </header>
+
+  <main class="contenidor">
+    <aside class="panell formulari-panell" aria-labelledby="titolFormulari">
+      <h2 id="titolFormulari">Nova tasca</h2>
+      <form id="formulariTasca" novalidate>
+        <input type="hidden" id="tascaId" />
+
+        <div class="camp">
+          <label for="titol">Títol *</label>
+          <input type="text" id="titol" name="titol" placeholder="Ex. Preparar documentació" />
+          <small id="errorTitol" class="error"></small>
+        </div>
+
+        <div class="camp">
+          <label for="descripcio">Descripció</label>
+          <textarea id="descripcio" name="descripcio" rows="4" placeholder="Detalls de la tasca"></textarea>
+        </div>
+
+        <div class="camp doble">
+          <div>
+            <label for="prioritat">Prioritat</label>
+            <select id="prioritat" name="prioritat">
+              <option value="baixa">Baixa</option>
+              <option value="mitjana" selected>Mitjana</option>
+              <option value="alta">Alta</option>
+            </select>
+          </div>
+          <div>
+            <label for="dataVenciment">Data límit</label>
+            <input type="date" id="dataVenciment" name="dataVenciment" />
+          </div>
+        </div>
+
+        <div class="camp">
+          <label for="estat">Estat</label>
+          <select id="estat" name="estat">
+            <option value="perFer">Per fer</option>
+            <option value="enCurs">En curs</option>
+            <option value="fet">Fet</option>
+          </select>
+        </div>
+
+        <div class="accions-formulari">
+          <button id="btnEnviar" class="boto boto-principal" type="submit">Afegir tasca</button>
+          <button id="btnCancelar" class="boto boto-secundari ocult" type="button">Cancel·lar edició</button>
+        </div>
+      </form>
+    </aside>
+
+    <section class="zona-principal">
+      <section class="panell filtres" aria-labelledby="titolFiltres">
+        <h2 id="titolFiltres">Filtres i cerca</h2>
+        <div class="filtres-grid">
+          <div class="camp">
+            <label for="cerca">Cerca</label>
+            <input type="search" id="cerca" placeholder="Cerca per títol o descripció" />
+          </div>
+          <div class="camp">
+            <label for="filtreEstat">Estat</label>
+            <select id="filtreEstat">
+              <option value="tots">Tots</option>
+              <option value="perFer">Per fer</option>
+              <option value="enCurs">En curs</option>
+              <option value="fet">Fet</option>
+            </select>
+          </div>
+          <div class="camp">
+            <label for="filtrePrioritat">Prioritat</label>
+            <select id="filtrePrioritat">
+              <option value="totes">Totes</option>
+              <option value="baixa">Baixa</option>
+              <option value="mitjana">Mitjana</option>
+              <option value="alta">Alta</option>
+            </select>
+          </div>
+          <button id="btnRestablirFiltres" class="boto boto-secundari" type="button">Restablir filtres</button>
+        </div>
+      </section>
+
+      <section class="estadistiques" aria-label="Estadístiques de tasques">
+        <article class="targeta-estadistica">
+          <span>Total</span>
+          <strong id="statTotal">0</strong>
+        </article>
+        <article class="targeta-estadistica">
+          <span>Per fer</span>
+          <strong id="statPerFer">0</strong>
+        </article>
+        <article class="targeta-estadistica">
+          <span>En curs</span>
+          <strong id="statEnCurs">0</strong>
+        </article>
+        <article class="targeta-estadistica">
+          <span>Fetes</span>
+          <strong id="statFet">0</strong>
+        </article>
+        <article class="targeta-estadistica destacada">
+          <span>Completades</span>
+          <strong id="statPercentatge">0%</strong>
+        </article>
+      </section>
+
+      <section class="tauler" aria-label="Tauler Kanban">
+        <section class="columna" data-estat="perFer">
+          <header>
+            <h2>Per fer</h2>
+            <span id="contadorPerFer">0</span>
+          </header>
+          <div id="columnaPerFer" class="llista-tasques"></div>
+        </section>
+
+        <section class="columna" data-estat="enCurs">
+          <header>
+            <h2>En curs</h2>
+            <span id="contadorEnCurs">0</span>
+          </header>
+          <div id="columnaEnCurs" class="llista-tasques"></div>
+        </section>
+
+        <section class="columna" data-estat="fet">
+          <header>
+            <h2>Fet</h2>
+            <span id="contadorFet">0</span>
+          </header>
+          <div id="columnaFet" class="llista-tasques"></div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <footer class="peu">
+    <p>Projecte DAW06 · HTML, CSS, JavaScript, localStorage, Git i GitHub Pages.</p>
+  </footer>
+</body>
+</html>
